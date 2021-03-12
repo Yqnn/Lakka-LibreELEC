@@ -79,7 +79,8 @@ if [ "$DEVICE" == "OdroidGoAdvance" ]; then
 elif [ "$VULKAN" == "nvidia-driver" ]; then
   RETROARCH_GL="--enable-vulkan --disable-x11 --disable-kms --disable-egl"
 elif [ "$OPENGL_SUPPORT" == "yes" ]; then
-  RETROARCH_GL="--enable-kms"
+  PKG_DEPENDS_TARGET+=" vulkan-loader"
+  RETROARCH_GL="--enable-kms --enable-vulkan"
 elif [ "$OPENGLES" == "odroidc1-mali" ] || [ "$OPENGLES" == "opengl-meson" ] || [ "$OPENGLES" == "opengl-meson8" ] || [ "$OPENGLES" == "opengl-meson-t82x" ] || [ "$OPENGLES" == "allwinner-fb-mali" ]; then
   RETROARCH_GL="--enable-opengles --disable-kms --disable-x11 --enable-mali_fbdev"
 elif [ "$OPENGLES" == "gpu-viv-bin-mx6q" ] || [ "$OPENGLES" == "imx-gpu-viv" ]; then
